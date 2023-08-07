@@ -2,7 +2,7 @@
 FROM node:14
 
 # Set the working directory in the container
-WORKDIR /
+WORKDIR /app
 
 # Copy the application files into the working directory
 COPY . /app
@@ -11,7 +11,7 @@ COPY . /app
 RUN npm install --production
 
 # Expose the default port for the application
-EXPOSE 3000
+EXPOSE 8080
 
 # Define the entry point for the container
 CMD ["npm", "start"]
