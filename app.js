@@ -43,6 +43,8 @@ app.post("/register", (request, response) => {
     .then((hashedPassword) => {
       // create a new user instance and collect the data
       const user = new User({
+				firstName: request.body.firstName,
+				lastName: request.body.lastName,
         email: request.body.email,
         password: hashedPassword,
       });
@@ -60,7 +62,7 @@ app.post("/register", (request, response) => {
         // catch erroe if the new user wasn't added successfully to the database
         .catch((error) => {
           response.status(500).send({
-            message: "Error creating user",
+            message: `Error creating user ${error}`,
             error,
           });
         });
@@ -96,7 +98,7 @@ app.post("/login", (request, response) => {
             });
           }
 
-          //   create JWT token
+          // create JWT token
           const token = jwt.sign(
             {
               userId: user._id,
@@ -106,7 +108,7 @@ app.post("/login", (request, response) => {
             { expiresIn: "24h" }
           );
 
-          //   return success response
+          // return success response
           response.status(200).send({
             message: "Login Successful",
             email: user.email,
