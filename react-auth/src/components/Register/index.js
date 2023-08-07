@@ -13,7 +13,7 @@ const Register = () => {
 
 	const configuration = {
 		method: "post",
-		url: "http://localhost:3003/register",
+		url: "https://mernapp-joshuaward.b4a.run/register",
 		data: {
 			firstName,
 			lastName,
