@@ -1,5 +1,5 @@
 # Use the official Node.js image as the base image
-FROM node:14
+FROM node:18
 
 # Set the working directory in the container
 WORKDIR /app
@@ -11,7 +11,7 @@ COPY . /app
 RUN npm install --production
 
 # Expose the default port for the application
-EXPOSE 8080
+EXPOSE 3000
 
 # Define the entry point for the container
 CMD ["npm", "start"]
