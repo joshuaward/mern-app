@@ -1,16 +1,17 @@
-
-# - Use the official Node.js image as the base image
+# Use the official Node.js image as the base image
 FROM node:18
 
-# - Set the working directory in the container
-WORKDIR /app  # Changed the working directory to /app
+# Set the working directory in the container
+WORKDIR /app
 
-# - Copy the application files into the working directory
-COPY . /app  # Copied the application files into the /app directory
+# Copy the application files into the working directory
+COPY . /app
 
-# - Install the application dependencies
-RUN cd /app \  # Changed the directory to /app before running npm install
-    && npm install
+# Install the application dependencies
+RUN npm install --production
 
-# - Define the entry point for the container
+# Expose the default port for the application
+EXPOSE 3000
+
+# Define the entry point for the container
 CMD ["npm", "start"]
